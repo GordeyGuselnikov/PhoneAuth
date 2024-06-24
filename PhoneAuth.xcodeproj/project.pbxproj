@@ -7,23 +7,33 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		18D6CE2D2A5BE024B67A31A6 /* Pods_PhoneAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFF973141C06CDF323C6CD7 /* Pods_PhoneAuth.framework */; };
 		8F9D84142C29CC100083F93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84132C29CC100083F93C /* AppDelegate.swift */; };
 		8F9D84162C29CC100083F93C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84152C29CC100083F93C /* SceneDelegate.swift */; };
-		8F9D84182C29CC100083F93C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84172C29CC100083F93C /* ViewController.swift */; };
-		8F9D841B2C29CC100083F93C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8F9D841A2C29CC100083F93C /* Base */; };
+		8F9D84182C29CC100083F93C /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84172C29CC100083F93C /* PhoneViewController.swift */; };
 		8F9D841D2C29CC120083F93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9D841C2C29CC120083F93C /* Assets.xcassets */; };
 		8F9D84202C29CC120083F93C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8F9D841F2C29CC120083F93C /* Base */; };
+		8F9D842A2C29D3E60083F93C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84292C29D3E60083F93C /* AuthManager.swift */; };
+		8F9D842C2C29DCEF0083F93C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */; };
+		8F9D842E2C29DD030083F93C /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D842D2C29DD030083F93C /* SMSCodeViewController.swift */; };
+		8FB9DEB42C29EC8800BF3ACC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FB9DEB32C29EC8800BF3ACC /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		124D7964C5BA3B3EDE001A9C /* Pods-PhoneAuth.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneAuth.release.xcconfig"; path = "Target Support Files/Pods-PhoneAuth/Pods-PhoneAuth.release.xcconfig"; sourceTree = "<group>"; };
+		2DFF973141C06CDF323C6CD7 /* Pods_PhoneAuth.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PhoneAuth.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9D84102C29CC100083F93C /* PhoneAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9D84132C29CC100083F93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F9D84152C29CC100083F93C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8F9D84172C29CC100083F93C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		8F9D841A2C29CC100083F93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8F9D84172C29CC100083F93C /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
 		8F9D841C2C29CC120083F93C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F9D841F2C29CC120083F93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F9D84212C29CC120083F93C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8F9D84292C29D3E60083F93C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
+		8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
+		8F9D842D2C29DD030083F93C /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
+		8FB9DEB32C29EC8800BF3ACC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		BF5A1B14900C7CF7F938DE65 /* Pods-PhoneAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneAuth.debug.xcconfig"; path = "Target Support Files/Pods-PhoneAuth/Pods-PhoneAuth.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,17 +41,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				18D6CE2D2A5BE024B67A31A6 /* Pods_PhoneAuth.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1776C0FC1ECD9C52E86741DA /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				BF5A1B14900C7CF7F938DE65 /* Pods-PhoneAuth.debug.xcconfig */,
+				124D7964C5BA3B3EDE001A9C /* Pods-PhoneAuth.release.xcconfig */,
+			);
+			path = Pods;
+			sourceTree = "<group>";
+		};
 		8F9D84072C29CC100083F93C = {
 			isa = PBXGroup;
 			children = (
 				8F9D84122C29CC100083F93C /* PhoneAuth */,
 				8F9D84112C29CC100083F93C /* Products */,
+				1776C0FC1ECD9C52E86741DA /* Pods */,
+				BAC072D146A04F9FD4B6B1EC /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -58,13 +80,24 @@
 			children = (
 				8F9D84132C29CC100083F93C /* AppDelegate.swift */,
 				8F9D84152C29CC100083F93C /* SceneDelegate.swift */,
-				8F9D84172C29CC100083F93C /* ViewController.swift */,
-				8F9D84192C29CC100083F93C /* Main.storyboard */,
+				8F9D84172C29CC100083F93C /* PhoneViewController.swift */,
+				8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */,
+				8F9D842D2C29DD030083F93C /* SMSCodeViewController.swift */,
+				8F9D84292C29D3E60083F93C /* AuthManager.swift */,
 				8F9D841C2C29CC120083F93C /* Assets.xcassets */,
 				8F9D841E2C29CC120083F93C /* LaunchScreen.storyboard */,
+				8FB9DEB32C29EC8800BF3ACC /* GoogleService-Info.plist */,
 				8F9D84212C29CC120083F93C /* Info.plist */,
 			);
 			path = PhoneAuth;
+			sourceTree = "<group>";
+		};
+		BAC072D146A04F9FD4B6B1EC /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				2DFF973141C06CDF323C6CD7 /* Pods_PhoneAuth.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -74,9 +107,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8F9D84242C29CC120083F93C /* Build configuration list for PBXNativeTarget "PhoneAuth" */;
 			buildPhases = (
+				28408EACD8638077C1E56D02 /* [CP] Check Pods Manifest.lock */,
 				8F9D840C2C29CC100083F93C /* Sources */,
 				8F9D840D2C29CC100083F93C /* Frameworks */,
 				8F9D840E2C29CC100083F93C /* Resources */,
+				C379D1516F8CDADA8A779C40 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -126,35 +161,72 @@
 			buildActionMask = 2147483647;
 			files = (
 				8F9D841D2C29CC120083F93C /* Assets.xcassets in Resources */,
+				8FB9DEB42C29EC8800BF3ACC /* GoogleService-Info.plist in Resources */,
 				8F9D84202C29CC120083F93C /* Base in Resources */,
-				8F9D841B2C29CC100083F93C /* Base in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		28408EACD8638077C1E56D02 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-PhoneAuth-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C379D1516F8CDADA8A779C40 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhoneAuth/Pods-PhoneAuth-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-PhoneAuth/Pods-PhoneAuth-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-PhoneAuth/Pods-PhoneAuth-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		8F9D840C2C29CC100083F93C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F9D84182C29CC100083F93C /* ViewController.swift in Sources */,
+				8F9D84182C29CC100083F93C /* PhoneViewController.swift in Sources */,
+				8F9D842C2C29DCEF0083F93C /* AccountViewController.swift in Sources */,
+				8F9D842A2C29D3E60083F93C /* AuthManager.swift in Sources */,
 				8F9D84142C29CC100083F93C /* AppDelegate.swift in Sources */,
 				8F9D84162C29CC100083F93C /* SceneDelegate.swift in Sources */,
+				8F9D842E2C29DD030083F93C /* SMSCodeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		8F9D84192C29CC100083F93C /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				8F9D841A2C29CC100083F93C /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		8F9D841E2C29CC120083F93C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -287,17 +359,18 @@
 		};
 		8F9D84252C29CC120083F93C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = BF5A1B14900C7CF7F938DE65 /* Pods-PhoneAuth.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M9QM497LW6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhoneAuth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -307,25 +380,30 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GordeyGuselnikov.PhoneAuth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		8F9D84262C29CC120083F93C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 124D7964C5BA3B3EDE001A9C /* Pods-PhoneAuth.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = M9QM497LW6;
+				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = PhoneAuth/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -335,9 +413,13 @@
 				MARKETING_VERSION = 1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = GordeyGuselnikov.PhoneAuth;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
+				SUPPORTS_MACCATALYST = NO;
+				SUPPORTS_MAC_DESIGNED_FOR_IPHONE_IPAD = NO;
+				SUPPORTS_XR_DESIGNED_FOR_IPHONE_IPAD = NO;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
