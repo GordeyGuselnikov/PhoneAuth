@@ -10,13 +10,19 @@
 		18D6CE2D2A5BE024B67A31A6 /* Pods_PhoneAuth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2DFF973141C06CDF323C6CD7 /* Pods_PhoneAuth.framework */; };
 		8F9D84142C29CC100083F93C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84132C29CC100083F93C /* AppDelegate.swift */; };
 		8F9D84162C29CC100083F93C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84152C29CC100083F93C /* SceneDelegate.swift */; };
-		8F9D84182C29CC100083F93C /* PhoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84172C29CC100083F93C /* PhoneViewController.swift */; };
+		8F9D84182C29CC100083F93C /* PhoneNumberViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84172C29CC100083F93C /* PhoneNumberViewController.swift */; };
 		8F9D841D2C29CC120083F93C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8F9D841C2C29CC120083F93C /* Assets.xcassets */; };
 		8F9D84202C29CC120083F93C /* Base in Resources */ = {isa = PBXBuildFile; fileRef = 8F9D841F2C29CC120083F93C /* Base */; };
 		8F9D842A2C29D3E60083F93C /* AuthManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D84292C29D3E60083F93C /* AuthManager.swift */; };
 		8F9D842C2C29DCEF0083F93C /* AccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */; };
-		8F9D842E2C29DD030083F93C /* SMSCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D842D2C29DD030083F93C /* SMSCodeViewController.swift */; };
+		8F9D842E2C29DD030083F93C /* VerificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8F9D842D2C29DD030083F93C /* VerificationViewController.swift */; };
 		8FB9DEB42C29EC8800BF3ACC /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 8FB9DEB32C29EC8800BF3ACC /* GoogleService-Info.plist */; };
+		8FB9DEB62C2A01C000BF3ACC /* AppCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9DEB52C2A01C000BF3ACC /* AppCodeViewController.swift */; };
+		8FB9DEB82C2A01FD00BF3ACC /* NoCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9DEB72C2A01FD00BF3ACC /* NoCodeViewController.swift */; };
+		8FB9DEBA2C2A027200BF3ACC /* KeychainManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9DEB92C2A027200BF3ACC /* KeychainManager.swift */; };
+		8FB9DEBC2C2A9A9500BF3ACC /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9DEBB2C2A9A9500BF3ACC /* MainViewController.swift */; };
+		8FB9DEBE2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9DEBD2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift */; };
+		8FB9DEC72C2B157800BF3ACC /* Extension + UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FB9DEC62C2B157800BF3ACC /* Extension + UIView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,14 +31,20 @@
 		8F9D84102C29CC100083F93C /* PhoneAuth.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhoneAuth.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8F9D84132C29CC100083F93C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8F9D84152C29CC100083F93C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		8F9D84172C29CC100083F93C /* PhoneViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneViewController.swift; sourceTree = "<group>"; };
+		8F9D84172C29CC100083F93C /* PhoneNumberViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhoneNumberViewController.swift; sourceTree = "<group>"; };
 		8F9D841C2C29CC120083F93C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8F9D841F2C29CC120083F93C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8F9D84212C29CC120083F93C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8F9D84292C29D3E60083F93C /* AuthManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthManager.swift; sourceTree = "<group>"; };
 		8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewController.swift; sourceTree = "<group>"; };
-		8F9D842D2C29DD030083F93C /* SMSCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SMSCodeViewController.swift; sourceTree = "<group>"; };
+		8F9D842D2C29DD030083F93C /* VerificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerificationViewController.swift; sourceTree = "<group>"; };
 		8FB9DEB32C29EC8800BF3ACC /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Desktop/GoogleService-Info.plist"; sourceTree = "<group>"; };
+		8FB9DEB52C2A01C000BF3ACC /* AppCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCodeViewController.swift; sourceTree = "<group>"; };
+		8FB9DEB72C2A01FD00BF3ACC /* NoCodeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NoCodeViewController.swift; sourceTree = "<group>"; };
+		8FB9DEB92C2A027200BF3ACC /* KeychainManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainManager.swift; sourceTree = "<group>"; };
+		8FB9DEBB2C2A9A9500BF3ACC /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		8FB9DEBD2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCodeEntryViewController.swift; sourceTree = "<group>"; };
+		8FB9DEC62C2B157800BF3ACC /* Extension + UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Extension + UIView.swift"; sourceTree = "<group>"; };
 		BF5A1B14900C7CF7F938DE65 /* Pods-PhoneAuth.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PhoneAuth.debug.xcconfig"; path = "Target Support Files/Pods-PhoneAuth/Pods-PhoneAuth.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,18 +90,56 @@
 		8F9D84122C29CC100083F93C /* PhoneAuth */ = {
 			isa = PBXGroup;
 			children = (
-				8F9D84132C29CC100083F93C /* AppDelegate.swift */,
-				8F9D84152C29CC100083F93C /* SceneDelegate.swift */,
-				8F9D84172C29CC100083F93C /* PhoneViewController.swift */,
-				8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */,
-				8F9D842D2C29DD030083F93C /* SMSCodeViewController.swift */,
-				8F9D84292C29D3E60083F93C /* AuthManager.swift */,
+				8FB9DECA2C2C39FB00BF3ACC /* App */,
+				8FB9DECB2C2C3A1100BF3ACC /* Extensions */,
+				8FB9DEC02C2AC6C800BF3ACC /* Services */,
+				8FB9DEBF2C2AC68200BF3ACC /* Controlllers */,
 				8F9D841C2C29CC120083F93C /* Assets.xcassets */,
 				8F9D841E2C29CC120083F93C /* LaunchScreen.storyboard */,
 				8FB9DEB32C29EC8800BF3ACC /* GoogleService-Info.plist */,
 				8F9D84212C29CC120083F93C /* Info.plist */,
 			);
 			path = PhoneAuth;
+			sourceTree = "<group>";
+		};
+		8FB9DEBF2C2AC68200BF3ACC /* Controlllers */ = {
+			isa = PBXGroup;
+			children = (
+				8FB9DEBB2C2A9A9500BF3ACC /* MainViewController.swift */,
+				8F9D84172C29CC100083F93C /* PhoneNumberViewController.swift */,
+				8FB9DEBD2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift */,
+				8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */,
+				8F9D842D2C29DD030083F93C /* VerificationViewController.swift */,
+				8FB9DEB52C2A01C000BF3ACC /* AppCodeViewController.swift */,
+				8FB9DEB72C2A01FD00BF3ACC /* NoCodeViewController.swift */,
+			);
+			path = Controlllers;
+			sourceTree = "<group>";
+		};
+		8FB9DEC02C2AC6C800BF3ACC /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				8FB9DEB92C2A027200BF3ACC /* KeychainManager.swift */,
+				8F9D84292C29D3E60083F93C /* AuthManager.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		8FB9DECA2C2C39FB00BF3ACC /* App */ = {
+			isa = PBXGroup;
+			children = (
+				8F9D84132C29CC100083F93C /* AppDelegate.swift */,
+				8F9D84152C29CC100083F93C /* SceneDelegate.swift */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		8FB9DECB2C2C3A1100BF3ACC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8FB9DEC62C2B157800BF3ACC /* Extension + UIView.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		BAC072D146A04F9FD4B6B1EC /* Frameworks */ = {
@@ -215,12 +265,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8F9D84182C29CC100083F93C /* PhoneViewController.swift in Sources */,
+				8F9D84182C29CC100083F93C /* PhoneNumberViewController.swift in Sources */,
+				8FB9DEC72C2B157800BF3ACC /* Extension + UIView.swift in Sources */,
 				8F9D842C2C29DCEF0083F93C /* AccountViewController.swift in Sources */,
+				8FB9DEB62C2A01C000BF3ACC /* AppCodeViewController.swift in Sources */,
 				8F9D842A2C29D3E60083F93C /* AuthManager.swift in Sources */,
+				8FB9DEB82C2A01FD00BF3ACC /* NoCodeViewController.swift in Sources */,
+				8FB9DEBE2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift in Sources */,
+				8FB9DEBA2C2A027200BF3ACC /* KeychainManager.swift in Sources */,
 				8F9D84142C29CC100083F93C /* AppDelegate.swift in Sources */,
 				8F9D84162C29CC100083F93C /* SceneDelegate.swift in Sources */,
-				8F9D842E2C29DD030083F93C /* SMSCodeViewController.swift in Sources */,
+				8F9D842E2C29DD030083F93C /* VerificationViewController.swift in Sources */,
+				8FB9DEBC2C2A9A9500BF3ACC /* MainViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

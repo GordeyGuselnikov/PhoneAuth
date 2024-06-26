@@ -18,14 +18,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         let window = UIWindow(windowScene: windowScene)
         
+        // Check authentication status
         if Auth.auth().currentUser == nil {
-            let vc = PhoneViewController()
-            vc.title = "Sign In"
+            // Пользователь не авторизован
+            let vc = MainViewController()
             let navVC = UINavigationController(rootViewController: vc)
             window.rootViewController = navVC
-        }
-        else {
-            window.rootViewController = AccountViewController()
+            
+        } else {
+            // Пользователь авторизован
+            let vc = AccountViewController()
+            let navVC = UINavigationController(rootViewController: vc)
+            window.rootViewController = navVC
         }
         
         window.makeKeyAndVisible()

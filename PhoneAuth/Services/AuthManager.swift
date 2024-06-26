@@ -45,4 +45,14 @@ class AuthManager {
             completion(true)
         }
     }
+    
+    public func exit(completion: @escaping (Bool) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(true)
+        } catch {
+            print("Ошибка при выходе из аккаунта: \(error.localizedDescription)")
+            completion(false)
+        }
+    }
 }
