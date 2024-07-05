@@ -11,8 +11,12 @@ extension UIView {
     
     func applyGradient() {
         let colors = [UIColor(red: 147/255, green: 88/255, blue: 247/255, alpha: 1),
-                      UIColor(red: 16/255, green: 215/255, blue: 226/255, alpha: 1)]
-        let startPoint = CGPoint(x: 0, y: 0.1)
+                      UIColor(red: 123/255, green: 120/255, blue: 242/255, alpha: 1),
+                      UIColor(red: 97/255, green: 151/255, blue: 238/255, alpha: 1),
+                      UIColor(red: 69/255, green: 181/255, blue: 233/255, alpha: 1),
+                      UIColor(red: 16/255, green: 215/255, blue: 226/255, alpha: 1),
+        ]
+        let startPoint = CGPoint(x: 0, y: 1)
         let endPoint = CGPoint(x: 1, y: 0)
         
         // Remove existing gradient layers

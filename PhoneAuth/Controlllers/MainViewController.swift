@@ -18,7 +18,7 @@ class MainViewController: UIViewController {
     private let sisLabel: UILabel = {
         let label = UILabel()
         label.text = "SIS"
-        label.font = UIFont.systemFont(ofSize: 34)
+        label.font = UIFont.systemFont(ofSize: 34, weight: .semibold)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,9 +49,9 @@ class MainViewController: UIViewController {
     private lazy var loginWithPhoneNumberButton: UIButton = {
         let button = UIButton()
         button.setTitle("Войти по номеру телефона", for: .normal)
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 25
         button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .light)
         button.addAction(UIAction { [unowned self] _ in
             loginWithPhoneNumberButtonTapped()
         }, for: .touchUpInside)
@@ -70,13 +70,24 @@ class MainViewController: UIViewController {
     
     private lazy var registerButton: UIButton = {
         let button = UIButton(type: .system)
-        button.setTitle("Зарегистрируйтесь сейчас", for: .normal)
-        button.setTitleColor(.systemBlue, for: .normal)
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 14)
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 14),
+            .foregroundColor: UIColor.systemBlue,
+            .underlineStyle: NSUnderlineStyle.single.rawValue
+        ]
+        
+        let attributeString = NSMutableAttributedString(
+            string: "Зарегистрируйтесь сейчас",
+            attributes: attributes
+        )
+        button.setAttributedTitle(attributeString, for: .normal)
+        
         button.addAction(UIAction { [unowned self] _ in
             loginWithPhoneNumberButtonTapped()
         }, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
+        
         return button
     }()
     
