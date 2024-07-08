@@ -33,27 +33,17 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private lazy var loginWithAppCodeButton: UIButton = {
+    private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Войти по коду приложения", for: .normal)
-        button.layer.cornerRadius = 20
-        button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
-        button.addAction(UIAction { [unowned self] _ in
-            loginWithAppCodeButtonTapped()
-        }, for: .touchUpInside)
-        button.translatesAutoresizingMaskIntoConstraints = false
-        return button
-    }()
-    
-    private lazy var loginWithPhoneNumberButton: UIButton = {
-        let button = UIButton()
-        button.setTitle("Войти по номеру телефона", for: .normal)
         button.layer.cornerRadius = 25
         button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .light)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        let title = KeychainManager.load(key: "appCode")?.isEmpty == false
+            ? "Войти по коду приложения"
+            : "Войти по номеру телефона"
+        button.setTitle(title, for: .normal)
         button.addAction(UIAction { [unowned self] _ in
-            loginWithPhoneNumberButtonTapped()
+            loginButtonTapped()
         }, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
@@ -84,7 +74,7 @@ class MainViewController: UIViewController {
         button.setAttributedTitle(attributeString, for: .normal)
         
         button.addAction(UIAction { [unowned self] _ in
-            loginWithPhoneNumberButtonTapped()
+            loginButtonTapped()
         }, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -106,17 +96,13 @@ class MainViewController: UIViewController {
         setupSubview(logoImageView,
                      sisLabel,
                      chooseYourSecurityLabel,
-                     loginWithAppCodeButton,
-                     loginWithPhoneNumberButton,
+                     loginButton,
                      bottomStackView)
-        determineNextScreen()
         setupConstraints()
     }
     
     override func viewDidLayoutSubviews() {
-        loginWithAppCodeButton.applyGradient()
-        loginWithPhoneNumberButton.applyGradient()
-
+        loginButton.applyGradient()
     }
     
     private func setupSubview(_ subviews: UIView...) {
@@ -137,15 +123,10 @@ class MainViewController: UIViewController {
             chooseYourSecurityLabel.topAnchor.constraint(equalTo: sisLabel.bottomAnchor, constant: 17),
             chooseYourSecurityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            loginWithAppCodeButton.widthAnchor.constraint(equalToConstant: 319),
-            loginWithAppCodeButton.heightAnchor.constraint(equalToConstant: 50),
-            loginWithAppCodeButton.topAnchor.constraint(equalTo: chooseYourSecurityLabel.bottomAnchor, constant: 100),
-            loginWithAppCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            
-            loginWithPhoneNumberButton.widthAnchor.constraint(equalToConstant: 319),
-            loginWithPhoneNumberButton.heightAnchor.constraint(equalToConstant: 50),
-            loginWithPhoneNumberButton.topAnchor.constraint(equalTo: chooseYourSecurityLabel.bottomAnchor, constant: 100),
-            loginWithPhoneNumberButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            loginButton.widthAnchor.constraint(equalToConstant: 319),
+            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            loginButton.topAnchor.constraint(equalTo: chooseYourSecurityLabel.bottomAnchor, constant: 100),
+            loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -89),
             bottomStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor)
@@ -153,26 +134,14 @@ class MainViewController: UIViewController {
         ])
     }
     
-    private func determineNextScreen() {
+    private func loginButtonTapped() {
         if let appCodeExists = KeychainManager.load(key: "appCode"), !appCodeExists.isEmpty {
-            // Есть сохраненный код приложения
-            loginWithAppCodeButton.isHidden = false
-            loginWithPhoneNumberButton.isHidden = true
+            let appCodeEntryVC = AppCodeEntryViewController()
+            navigationController?.pushViewController(appCodeEntryVC, animated: true)
         } else {
-            // Нет сохраненного кода приложения
-            loginWithAppCodeButton.isHidden = true
-            loginWithPhoneNumberButton.isHidden = false
+            let phoneNumberVC = PhoneNumberViewController()
+            navigationController?.pushViewController(phoneNumberVC, animated: true)
         }
-    }
-    
-    private func loginWithPhoneNumberButtonTapped() {
-        let phoneNumberVC = PhoneNumberViewController()
-        navigationController?.pushViewController(phoneNumberVC, animated: true)
-    }
-    
-    private func loginWithAppCodeButtonTapped() {
-        let appCodeEntryVC = AppCodeEntryViewController()
-        navigationController?.pushViewController(appCodeEntryVC, animated: true)
     }
 
 }
