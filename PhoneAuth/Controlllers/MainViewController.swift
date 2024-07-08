@@ -35,9 +35,9 @@ class MainViewController: UIViewController {
     
     private lazy var loginButton: UIButton = {
         let button = UIButton()
-        button.layer.cornerRadius = 25
+        button.layer.cornerRadius = 28
         button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         let title = KeychainManager.load(key: "appCode")?.isEmpty == false
             ? "Войти по коду приложения"
             : "Войти по номеру телефона"
@@ -92,7 +92,7 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .black
-        
+        setupNavigationBar()
         setupSubview(logoImageView,
                      sisLabel,
                      chooseYourSecurityLabel,
@@ -117,15 +117,15 @@ class MainViewController: UIViewController {
             logoImageView.topAnchor.constraint(equalTo: view.topAnchor, constant: 265),
             logoImageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            sisLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 32),
+            sisLabel.topAnchor.constraint(equalTo: logoImageView.bottomAnchor, constant: 31),
             sisLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             chooseYourSecurityLabel.topAnchor.constraint(equalTo: sisLabel.bottomAnchor, constant: 17),
             chooseYourSecurityLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             loginButton.widthAnchor.constraint(equalToConstant: 319),
-            loginButton.heightAnchor.constraint(equalToConstant: 50),
-            loginButton.topAnchor.constraint(equalTo: chooseYourSecurityLabel.bottomAnchor, constant: 100),
+            loginButton.heightAnchor.constraint(equalToConstant: 56),
+            loginButton.topAnchor.constraint(equalTo: view.topAnchor, constant: 559),
             loginButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             bottomStackView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -89),
@@ -144,4 +144,16 @@ class MainViewController: UIViewController {
         }
     }
 
+}
+
+private extension MainViewController {
+    func setupNavigationBar() {
+        let navBarAppearance = UINavigationBarAppearance()
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.setBackIndicatorImage(UIImage(named: "arrow-left"), transitionMaskImage: UIImage(named: "arrow-left"))
+        
+        navigationController?.navigationBar.standardAppearance = navBarAppearance
+        navigationItem.backButtonTitle = ""
+        navigationController?.navigationBar.tintColor = .white
+    }
 }

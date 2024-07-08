@@ -65,6 +65,8 @@ class PhoneNumberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Войти"
+        
         setupUI()
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
@@ -134,5 +136,3 @@ class PhoneNumberViewController: UIViewController {
     }
     
 }
-
-
