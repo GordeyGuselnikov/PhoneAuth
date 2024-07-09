@@ -20,7 +20,7 @@ class NoCodeViewController: UIViewController {
     
     private let contactSupportLabel: UILabel = {
         let label = UILabel()
-        label.text = "Не пришел код?\nОбратитесь в чат поддержки"
+        label.text = "Не пришел код?\nОбратитесь в чат\nподдержки"
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
         label.textColor = .white
         label.textAlignment = .center

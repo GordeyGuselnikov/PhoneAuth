@@ -12,9 +12,8 @@ class AppCodeViewController: UIViewController {
     private let createCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Создайте код приложения"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
         label.textColor = .white
-        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -22,9 +21,8 @@ class AppCodeViewController: UIViewController {
     private let instructionLabel: UILabel = {
         let label = UILabel()
         label.text = "Введите код из 4 символов"
-        label.font = UIFont.systemFont(ofSize: 14, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         label.textColor = .gray
-        label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -54,9 +52,9 @@ class AppCodeViewController: UIViewController {
         button.setTitle("Зарегистрироваться", for: .normal)
         button.backgroundColor = .gray
         button.tintColor = .white
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 28
         button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.addAction(UIAction { [unowned self] _ in
             createCodeButtonTapped()
         }, for: .touchUpInside)
@@ -78,6 +76,7 @@ class AppCodeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Код приложения"
         setupUI()
         setupInitialView()
 
@@ -104,17 +103,14 @@ class AppCodeViewController: UIViewController {
         view.addSubview(skipButton)
         
         NSLayoutConstraint.activate([
-            createCodeLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
-            createCodeLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            createCodeLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            createCodeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 169),
+            createCodeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            instructionLabel.topAnchor.constraint(equalTo: createCodeLabel.bottomAnchor, constant: 20),
-            instructionLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            instructionLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            instructionLabel.topAnchor.constraint(equalTo: createCodeLabel.bottomAnchor, constant: 47),
+            instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            codeTextField.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 20),
-            codeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            codeTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+            codeTextField.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 36),
+            codeTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             confirmCodeTextField.topAnchor.constraint(equalTo: codeTextField.bottomAnchor, constant: 20),
             confirmCodeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -122,7 +118,7 @@ class AppCodeViewController: UIViewController {
             
             createCodeButton.topAnchor.constraint(equalTo: confirmCodeTextField.bottomAnchor, constant: 40),
             createCodeButton.widthAnchor.constraint(equalToConstant: 319),
-            createCodeButton.heightAnchor.constraint(equalToConstant: 50),
+            createCodeButton.heightAnchor.constraint(equalToConstant: 56),
             createCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             skipButton.topAnchor.constraint(equalTo: createCodeButton.bottomAnchor, constant: 20),
@@ -163,7 +159,11 @@ class AppCodeViewController: UIViewController {
     private func updateCreateCodeButtonState() {
         let isCodeValid = codeTextField.text?.count == 4 && confirmCodeTextField.text?.count == 4
         createCodeButton.isEnabled = isCodeValid
-        createCodeButton.backgroundColor = isCodeValid ? UIColor.systemBlue : UIColor.gray
+        if isCodeValid {
+            createCodeButton.applyGradient()
+        } else {
+            createCodeButton.backgroundColor = .gray
+        }
     }
     
     @objc private func textFieldDidChange() {
@@ -189,6 +189,7 @@ class AppCodeViewController: UIViewController {
     
     @objc private func skipButtonTapped() {
         let accountVC = AccountViewController()
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
         navigationController?.pushViewController(accountVC, animated: true)
     }
 }

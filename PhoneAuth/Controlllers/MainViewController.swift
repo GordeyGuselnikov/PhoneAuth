@@ -149,7 +149,7 @@ class MainViewController: UIViewController {
 private extension MainViewController {
     func setupNavigationBar() {
         let navBarAppearance = UINavigationBarAppearance()
-        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white]
+        navBarAppearance.titleTextAttributes = [.foregroundColor: UIColor.white, .font: UIFont.systemFont(ofSize: 20)]
         navBarAppearance.setBackIndicatorImage(UIImage(named: "arrow-left"), transitionMaskImage: UIImage(named: "arrow-left"))
         
         navigationController?.navigationBar.standardAppearance = navBarAppearance

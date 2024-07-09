@@ -12,7 +12,7 @@ class PhoneNumberViewController: UIViewController {
     private let phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "Номер телефона"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -20,21 +20,38 @@ class PhoneNumberViewController: UIViewController {
     
     private let countryCodeTextField: UITextField = {
         let textField = UITextField()
-        textField.placeholder = "+7"
+        textField.backgroundColor = .black
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "+7",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
         textField.borderStyle = .roundedRect
         textField.keyboardType = .phonePad
         textField.textAlignment = .left
+        textField.textColor = .white
+        textField.layer.borderWidth = 0.6
+        textField.layer.borderColor = UIColor.cyan.cgColor
+        textField.layer.cornerRadius = 10
+        textField.font = .systemFont(ofSize: 19)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
     
     private let phoneNumberTextField: UITextField = {
         let textField = UITextField()
-        textField.backgroundColor = .secondarySystemBackground
-        textField.placeholder = "Ваш номер телефона"
+        textField.backgroundColor = .black
+        textField.attributedPlaceholder = NSAttributedString(
+            string: "Ваш номер телефона",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
         textField.borderStyle = .roundedRect
         textField.keyboardType = .phonePad
         textField.textAlignment = .left
+        textField.textColor = .white
+        textField.layer.borderWidth = 0.6
+        textField.layer.borderColor = UIColor.cyan.cgColor
+        textField.layer.cornerRadius = 10
+        textField.font = .systemFont(ofSize: 19)
         textField.translatesAutoresizingMaskIntoConstraints = false
         return textField
     }()
@@ -42,7 +59,7 @@ class PhoneNumberViewController: UIViewController {
     private let infoLabel: UILabel = {
         let label = UILabel()
         label.text = "Код придет на ваш номер телефона"
-        label.font = UIFont.systemFont(ofSize: 17, weight: .light)
+        label.font = UIFont.systemFont(ofSize: 13, weight: .light)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -52,10 +69,9 @@ class PhoneNumberViewController: UIViewController {
         let button = UIButton()
         button.setTitle("Получить код", for: .normal)
         button.backgroundColor = .gray
-        button.tintColor = .white
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 28
         button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.addAction(UIAction { [unowned self] _ in
             getCodeButtonTapped()
         }, for: .touchUpInside)
@@ -71,7 +87,6 @@ class PhoneNumberViewController: UIViewController {
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
 
-    
     private func setupUI() {
         view.backgroundColor = .black
         
@@ -87,18 +102,20 @@ class PhoneNumberViewController: UIViewController {
             
             countryCodeTextField.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 20),
             countryCodeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            countryCodeTextField.widthAnchor.constraint(equalToConstant: 60),
+            countryCodeTextField.widthAnchor.constraint(equalToConstant: 70),
+            countryCodeTextField.heightAnchor.constraint(equalToConstant: 50),
             
             phoneNumberTextField.topAnchor.constraint(equalTo: countryCodeTextField.topAnchor),
-            phoneNumberTextField.leadingAnchor.constraint(equalTo: countryCodeTextField.trailingAnchor, constant: 10),
+            phoneNumberTextField.bottomAnchor.constraint(equalTo: countryCodeTextField.bottomAnchor),
+            phoneNumberTextField.leadingAnchor.constraint(equalTo: countryCodeTextField.trailingAnchor, constant: 18),
             phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
             
-            infoLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 20),
+            infoLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 22),
             infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
-            getCodeButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 20),
+            getCodeButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 53),
             getCodeButton.widthAnchor.constraint(equalToConstant: 319),
-            getCodeButton.heightAnchor.constraint(equalToConstant: 50),
+            getCodeButton.heightAnchor.constraint(equalToConstant: 56),
             getCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
         
@@ -130,6 +147,7 @@ class PhoneNumberViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 let verificationVC = VerificationViewController()
+                self?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
                 self?.navigationController?.pushViewController(verificationVC, animated: true)
             }
         }

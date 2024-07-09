@@ -14,7 +14,7 @@ class VerificationViewController: UIViewController, UITextFieldDelegate {
     private let verificationLabel: UILabel = {
         let label = UILabel()
         label.text = "Верификация"
-        label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
+        label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
         label.textColor = .white
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -22,7 +22,9 @@ class VerificationViewController: UIViewController, UITextFieldDelegate {
     
     private let instructionLabel: UILabel = {
         let label = UILabel()
-        label.text = "Введите код из смс, что мы отправили вам"
+        label.text = "Введите код из смс,\nчто мы отправили вам"
+        label.numberOfLines = 0
+        label.textAlignment = .center
         label.font = UIFont.systemFont(ofSize: 16, weight: .light)
         label.textColor = .gray
         label.translatesAutoresizingMaskIntoConstraints = false
@@ -44,9 +46,9 @@ class VerificationViewController: UIViewController, UITextFieldDelegate {
         button.setTitle("Зарегистрироваться", for: .normal)
         button.backgroundColor = .gray
         button.tintColor = .white
-        button.layer.cornerRadius = 20
+        button.layer.cornerRadius = 28
         button.clipsToBounds = true
-        button.titleLabel?.font = UIFont.systemFont(ofSize: 20, weight: .semibold)
+        button.titleLabel?.font = UIFont.systemFont(ofSize: 16, weight: .regular)
         button.addAction(UIAction { [unowned self] _ in
             verifyButtonTapped()
         }, for: .touchUpInside)
@@ -73,6 +75,7 @@ class VerificationViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Войти"
         setupSubview(mainStackView, verifyButton, noCodeButton)
         setupUI()
         noCodeButton.addTarget(self, action: #selector(noCodeButtonTapped), for: .touchUpInside)
@@ -87,9 +90,9 @@ class VerificationViewController: UIViewController, UITextFieldDelegate {
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             verifyButton.topAnchor.constraint(equalTo: mainStackView.bottomAnchor, constant: 40),
-            verifyButton.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
-            verifyButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
-            verifyButton.heightAnchor.constraint(equalToConstant: 50),
+            verifyButton.widthAnchor.constraint(equalToConstant: 319),
+            verifyButton.heightAnchor.constraint(equalToConstant: 56),
+            verifyButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             
             noCodeButton.topAnchor.constraint(equalTo: verifyButton.bottomAnchor, constant: 20),
             noCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -131,6 +134,7 @@ class VerificationViewController: UIViewController, UITextFieldDelegate {
             }
             DispatchQueue.main.async {
                 let appCodeVC = AppCodeViewController()
+                self?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
                 self?.navigationController?.pushViewController(appCodeVC, animated: true)
             }
         }
