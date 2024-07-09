@@ -74,7 +74,7 @@ class MainViewController: UIViewController {
         button.setAttributedTitle(attributeString, for: .normal)
         
         button.addAction(UIAction { [unowned self] _ in
-            loginButtonTapped()
+            registerButtonTapped()
         }, for: .touchUpInside)
         button.translatesAutoresizingMaskIntoConstraints = false
         
@@ -140,8 +140,15 @@ class MainViewController: UIViewController {
             navigationController?.pushViewController(appCodeEntryVC, animated: true)
         } else {
             let phoneNumberVC = PhoneNumberViewController()
+            phoneNumberVC.title = "Войти"
             navigationController?.pushViewController(phoneNumberVC, animated: true)
         }
+    }
+    
+    private func registerButtonTapped() {
+        let phoneNumberVC = PhoneNumberViewController()
+        phoneNumberVC.title = "Зарегистрироваться"
+        navigationController?.pushViewController(phoneNumberVC, animated: true)
     }
 
 }

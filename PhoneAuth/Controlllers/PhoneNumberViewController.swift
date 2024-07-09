@@ -30,7 +30,7 @@ class PhoneNumberViewController: UIViewController {
         textField.textAlignment = .left
         textField.textColor = .white
         textField.layer.borderWidth = 0.6
-        textField.layer.borderColor = UIColor.cyan.cgColor
+        textField.layer.borderColor = UIColor.systemCyan.cgColor
         textField.layer.cornerRadius = 10
         textField.font = .systemFont(ofSize: 19)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -49,7 +49,7 @@ class PhoneNumberViewController: UIViewController {
         textField.textAlignment = .left
         textField.textColor = .white
         textField.layer.borderWidth = 0.6
-        textField.layer.borderColor = UIColor.cyan.cgColor
+        textField.layer.borderColor = UIColor.systemCyan.cgColor
         textField.layer.cornerRadius = 10
         textField.font = .systemFont(ofSize: 19)
         textField.translatesAutoresizingMaskIntoConstraints = false
@@ -81,7 +81,7 @@ class PhoneNumberViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Войти"
+//        title = "Войти"
         
         setupUI()
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
