@@ -53,8 +53,7 @@ class VerificationViewController: UIViewController {
     
     private func createCodeTextField() -> UITextField {
         let textField = UITextField()
-        textField.backgroundColor = .black
-        textField.borderStyle = .roundedRect
+        textField.backgroundColor = .clear
         textField.keyboardType = .phonePad
         textField.textAlignment = .center
         textField.textColor = .white
