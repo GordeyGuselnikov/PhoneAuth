@@ -7,9 +7,12 @@
 
 import UIKit
 
-class VerificationViewController: UIViewController {
+final class VerificationViewController: UIViewController {
+    // MARK: - Private Properties
+    private var timer: DispatchSourceTimer?
+    private var remainingTime = 5 * 60
     
-    private let verificationLabel: UILabel = {
+    private lazy var verificationLabel: UILabel = {
         let label = UILabel()
         label.text = "Верификация"
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
@@ -18,7 +21,7 @@ class VerificationViewController: UIViewController {
         return label
     }()
     
-    private let instructionLabel: UILabel = {
+    private lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.text = "Введите код из смс,\nчто мы отправили вам\n"
         label.numberOfLines = 0
@@ -29,7 +32,7 @@ class VerificationViewController: UIViewController {
         return label
     }()
     
-    private let countdownLabel: UILabel = {
+    private lazy var countdownLabel: UILabel = {
         let label = UILabel()
         label.text = "Запросить код можно через 05:00"
         label.font = UIFont.systemFont(ofSize: 16, weight: .semibold)
@@ -50,22 +53,6 @@ class VerificationViewController: UIViewController {
         }
         return textFields
     }()
-    
-    private func createCodeTextField() -> UITextField {
-        let textField = UITextField()
-        textField.backgroundColor = .clear
-        textField.keyboardType = .phonePad
-        textField.textAlignment = .center
-        textField.textColor = .white
-        textField.layer.borderWidth = 0.6
-        textField.layer.borderColor = UIColor.systemCyan.cgColor
-        textField.layer.cornerRadius = 4
-        textField.font = .systemFont(ofSize: 19)
-        textField.translatesAutoresizingMaskIntoConstraints = false
-        textField.widthAnchor.constraint(equalToConstant: 46).isActive = true
-        textField.heightAnchor.constraint(equalToConstant: 46).isActive = true
-        return textField
-    }
     
     private lazy var verifyButton: UIButton = {
         let button = UIButton()
@@ -123,21 +110,29 @@ class VerificationViewController: UIViewController {
         return stackView
     }()
     
-    private var timer: DispatchSourceTimer?
-    private var remainingTime = 5 * 60
-    
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = "Войти"
-        setupSubview(mainStackView, verifyButton, noCodeButton)
         setupUI()
         codeTextFields.forEach { $0.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged) }
         startTimer()
     }
     
+    // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = .black
-        
+        setupSubview(mainStackView, verifyButton, noCodeButton)
+        setupConstraints()
+        updateVerifyButtonState()
+    }
+    
+    private func setupSubview(_ subviews: UIView...) {
+        subviews.forEach { subview in
+            view.addSubview(subview)
+        }
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             mainStackView.topAnchor.constraint(equalTo: view.topAnchor, constant: 168),
             mainStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -150,16 +145,25 @@ class VerificationViewController: UIViewController {
             noCodeButton.topAnchor.constraint(equalTo: verifyButton.bottomAnchor, constant: 31),
             noCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
-        updateVerifyButtonState()
     }
     
-    private func setupSubview(_ subviews: UIView...) {
-        subviews.forEach { subview in
-            view.addSubview(subview)
-        }
+    private func createCodeTextField() -> UITextField {
+        let textField = UITextField()
+        textField.backgroundColor = .clear
+        textField.keyboardType = .phonePad
+        textField.textAlignment = .center
+        textField.textColor = .white
+        textField.layer.borderWidth = 0.6
+        textField.layer.borderColor = UIColor.systemCyan.cgColor
+        textField.layer.cornerRadius = 4
+        textField.font = .systemFont(ofSize: 19)
+        textField.translatesAutoresizingMaskIntoConstraints = false
+        textField.widthAnchor.constraint(equalToConstant: 46).isActive = true
+        textField.heightAnchor.constraint(equalToConstant: 46).isActive = true
+        return textField
     }
     
+    // MARK: - Private Methods
     @objc private func textFieldDidChange() {
         updateVerifyButtonState()
     }
@@ -195,6 +199,7 @@ class VerificationViewController: UIViewController {
         navigationController?.pushViewController(noCodeVC, animated: true)
     }
     
+    // MARK: - Timer
     private func startTimer() {
         timer = DispatchSource.makeTimerSource()
         timer?.schedule(deadline: .now(), repeating: 1.0)
@@ -253,5 +258,4 @@ extension VerificationViewController: UITextFieldDelegate {
             return false
         }
     }
-
 }

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class AccountViewController: UIViewController {
-    
-    private let logoutButton: UIButton = {
+final class AccountViewController: UIViewController {
+    // MARK: - Private Properties
+    private lazy var logoutButton: UIButton = {
         let button = UIButton(type: .system)
         button.setTitle("Выйти", for: .normal)
         button.backgroundColor = .red
@@ -19,6 +19,7 @@ class AccountViewController: UIViewController {
         return button
     }()
 
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemGreen
@@ -34,6 +35,7 @@ class AccountViewController: UIViewController {
         logoutButton.addTarget(self, action: #selector(logoutButtonTapped), for: .touchUpInside)
     }
     
+    // MARK: - Private Methods
     @objc private func logoutButtonTapped() {
         AuthManager.shared.exit { [weak self] success in
             if success {

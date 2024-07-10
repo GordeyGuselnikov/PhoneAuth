@@ -7,9 +7,12 @@
 
 import UIKit
 
-class AppCodeViewController: UIViewController {
+final class AppCodeViewController: UIViewController {
+    // MARK: - Private Properties
+    private var appCodeExists = false
+    private var firstCode: String?
     
-    private let createCodeLabel: UILabel = {
+    private lazy var createCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Создайте код приложения"
         label.font = UIFont.systemFont(ofSize: 24, weight: .regular)
@@ -18,7 +21,7 @@ class AppCodeViewController: UIViewController {
         return label
     }()
     
-    private let instructionLabel: UILabel = {
+    private lazy var instructionLabel: UILabel = {
         let label = UILabel()
         label.text = "Введите код из 4 символов"
         label.font = UIFont.systemFont(ofSize: 16, weight: .regular)
@@ -27,7 +30,7 @@ class AppCodeViewController: UIViewController {
         return label
     }()
     
-    private let codeTextField: UITextField = {
+    private lazy var codeTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = UIColor(red: 28/255, green: 25/255, blue: 44/255, alpha: 1)
         
@@ -69,34 +72,63 @@ class AppCodeViewController: UIViewController {
         return button
     }()
     
-    private var appCodeExists = false
-    private var firstCode: String?
-    
-    // MARK: - Lifecycle
-    
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Код приложения"
+        
         setupUI()
         setupInitialView()
 
         codeTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
+    // MARK: - Override Methods
     override func viewDidLayoutSubviews() {
         skipButton.applyGradient()
     }
     
     // MARK: - UI Setup
-    
     private func setupUI() {
         view.backgroundColor = .black
+        title = "Код приложения"
         
-        view.addSubview(createCodeLabel)
-        view.addSubview(instructionLabel)
-        view.addSubview(codeTextField)
-        view.addSubview(skipButton)
-        
+        setupSubview(createCodeLabel,
+                     instructionLabel,
+                     codeTextField,
+                     skipButton
+        )
+//        view.addSubview(createCodeLabel)
+//        view.addSubview(instructionLabel)
+//        view.addSubview(codeTextField)
+//        view.addSubview(skipButton)
+        setupConstraints()
+//        NSLayoutConstraint.activate([
+//            createCodeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 169),
+//            createCodeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            
+//            instructionLabel.topAnchor.constraint(equalTo: createCodeLabel.bottomAnchor, constant: 47),
+//            instructionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            
+//            codeTextField.topAnchor.constraint(equalTo: instructionLabel.bottomAnchor, constant: 36),
+//            codeTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            codeTextField.widthAnchor.constraint(equalToConstant: 180),
+//            codeTextField.heightAnchor.constraint(equalToConstant: 52),
+//            
+//            skipButton.topAnchor.constraint(equalTo: codeTextField.bottomAnchor, constant: 77),
+//            skipButton.widthAnchor.constraint(equalToConstant: 319),
+//            skipButton.heightAnchor.constraint(equalToConstant: 56),
+//            skipButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            
+//        ])
+    }
+    
+    private func setupSubview(_ subviews: UIView...) {
+        subviews.forEach { subview in
+            view.addSubview(subview)
+        }
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             createCodeLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 169),
             createCodeLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
@@ -118,7 +150,6 @@ class AppCodeViewController: UIViewController {
     }
     
     // MARK: - Private Methods
-    
     private func setupInitialView() {
         appCodeExists = KeychainManager.isAuthorizedWithAppCode("")
     }
@@ -142,6 +173,7 @@ class AppCodeViewController: UIViewController {
             KeychainManager.save(key: "appCode", value: code)
             appCodeExists = true
             let accountVC = AccountViewController()
+            navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
             navigationController?.pushViewController(accountVC, animated: true)
         } else {
             let alert = UIAlertController(title: "Ошибка", message: "Коды не совпадают", preferredStyle: .alert)

@@ -7,9 +7,9 @@
 
 import UIKit
 
-class NoCodeViewController: UIViewController {
-    
-    private let noCodeLabel: UILabel = {
+final class NoCodeViewController: UIViewController {
+    // MARK: - Private Properties
+    private lazy var noCodeLabel: UILabel = {
         let label = UILabel()
         label.text = "Не пришел код?"
         label.font = UIFont.systemFont(ofSize: 24, weight: .medium)
@@ -18,7 +18,7 @@ class NoCodeViewController: UIViewController {
         return label
     }()
     
-    private let contactSupportLabel: UILabel = {
+    private lazy var contactSupportLabel: UILabel = {
         let label = UILabel()
         label.text = "Не пришел код?\nОбратитесь в чат\nподдержки"
         label.font = UIFont.systemFont(ofSize: 16, weight: .medium)
@@ -29,12 +29,13 @@ class NoCodeViewController: UIViewController {
         return label
     }()
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
         setupUI()
     }
     
+    // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = .black
         

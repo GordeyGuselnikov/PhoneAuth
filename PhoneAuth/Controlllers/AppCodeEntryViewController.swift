@@ -7,9 +7,9 @@
 
 import UIKit
 
-class AppCodeEntryViewController: UIViewController {
-    
-    private let titleLabel: UILabel = {
+final class AppCodeEntryViewController: UIViewController {
+    // MARK: - Private Properties
+    private lazy var titleLabel: UILabel = {
         let label = UILabel()
         label.text = "Введите код приложения"
         label.font = UIFont.systemFont(ofSize: 24, weight: .bold)
@@ -19,7 +19,7 @@ class AppCodeEntryViewController: UIViewController {
         return label
     }()
     
-    private let codeTextField: UITextField = {
+    private lazy var codeTextField: UITextField = {
         let textField = UITextField()
         textField.isSecureTextEntry = true
         textField.placeholder = "Введите код"
@@ -44,21 +44,28 @@ class AppCodeEntryViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        
         setupUI()
         codeTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
     
+    // MARK: - UI Setup
     private func setupUI() {
-        
-        
-        view.addSubview(titleLabel)
-        view.addSubview(codeTextField)
-        view.addSubview(loginWithAppCodeButton)
-        
+        view.backgroundColor = .black
+        setupSubview(titleLabel, codeTextField, loginWithAppCodeButton)
+        setupConstraints()
+        updateGetCodeButtonState()
+    }
+    
+    private func setupSubview(_ subviews: UIView...) {
+        subviews.forEach { subview in
+            view.addSubview(subview)
+        }
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             titleLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -73,12 +80,10 @@ class AppCodeEntryViewController: UIViewController {
             loginWithAppCodeButton.widthAnchor.constraint(equalToConstant: 319),
             loginWithAppCodeButton.heightAnchor.constraint(equalToConstant: 50),
             loginWithAppCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
-            
-            
         ])
-        updateGetCodeButtonState()
     }
     
+    // MARK: - Private Methods
     @objc private func textFieldDidChange() {
         updateGetCodeButtonState()
     }
@@ -94,25 +99,17 @@ class AppCodeEntryViewController: UIViewController {
     }
     
     private func loginButtonTapped() {
-        guard let enteredCode = codeTextField.text else {
-            // Handle case where code is empty
-            return
-        }
+        guard let enteredCode = codeTextField.text else { return }
         
-        // Load saved app code from Keychain
         guard let savedCode = KeychainManager.load(key: "appCode") else {
-            // Handle case where there is no saved app code
             showAlert(title: "Ошибка", message: "Не удалось загрузить код приложения")
             return
         }
         
-        // Check if entered code matches the saved app code
         if enteredCode == savedCode {
-            // Navigate to AccountViewController upon successful login
             let accountVC = AccountViewController()
             navigationController?.pushViewController(accountVC, animated: true)
         } else {
-            // Show alert for incorrect code
             showAlert(title: "Ошибка", message: "Введенный код неверный")
         }
     }

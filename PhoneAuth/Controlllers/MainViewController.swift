@@ -7,15 +7,16 @@
 
 import UIKit
 
-class MainViewController: UIViewController {
+final class MainViewController: UIViewController {
     
-    private let logoImageView: UIImageView = {
+    // MARK: - Private Properties
+    private lazy var logoImageView: UIImageView = {
         let imageView = UIImageView(image: UIImage(named: "Logo"))
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
     
-    private let sisLabel: UILabel = {
+    private lazy var sisLabel: UILabel = {
         let label = UILabel()
         label.text = "SIS"
         label.font = UIFont.systemFont(ofSize: 34, weight: .semibold)
@@ -24,7 +25,7 @@ class MainViewController: UIViewController {
         return label
     }()
     
-    private let chooseYourSecurityLabel: UILabel = {
+    private lazy var chooseYourSecurityLabel: UILabel = {
         let label = UILabel()
         label.text = "Выбери свою безопасность"
         label.font = UIFont.systemFont(ofSize: 17)
@@ -49,7 +50,7 @@ class MainViewController: UIViewController {
         return button
     }()
     
-    private let noAccountLabel: UILabel = {
+    private lazy var noAccountLabel: UILabel = {
         let label = UILabel()
         label.text = "У вас нет аккаунта?"
         label.font = UIFont.systemFont(ofSize: 14)
@@ -89,20 +90,27 @@ class MainViewController: UIViewController {
         return stackView
     }()
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupUI()
+    }
+    
+    // MARK: - Override Methods
+    override func viewDidLayoutSubviews() {
+        loginButton.applyGradient()
+    }
+    
+    // MARK: - UI Setup
+    private func setupUI() {
         view.backgroundColor = .black
-        setupNavigationBar()
         setupSubview(logoImageView,
                      sisLabel,
                      chooseYourSecurityLabel,
                      loginButton,
                      bottomStackView)
         setupConstraints()
-    }
-    
-    override func viewDidLayoutSubviews() {
-        loginButton.applyGradient()
+        setupNavigationBar()
     }
     
     private func setupSubview(_ subviews: UIView...) {
@@ -134,6 +142,7 @@ class MainViewController: UIViewController {
         ])
     }
     
+    // MARK: - Private Methods
     private func loginButtonTapped() {
         if let appCodeExists = KeychainManager.load(key: "appCode"), !appCodeExists.isEmpty {
             let appCodeEntryVC = AppCodeEntryViewController()

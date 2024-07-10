@@ -7,9 +7,9 @@
 
 import UIKit
 
-class PhoneNumberViewController: UIViewController {
-    
-    private let phoneNumberLabel: UILabel = {
+final class PhoneNumberViewController: UIViewController {
+    // MARK: - Private Properties
+    private lazy var phoneNumberLabel: UILabel = {
         let label = UILabel()
         label.text = "Номер телефона"
         label.font = UIFont.systemFont(ofSize: 13, weight: .light)
@@ -18,7 +18,7 @@ class PhoneNumberViewController: UIViewController {
         return label
     }()
     
-    private let countryCodeTextField: UITextField = {
+    private lazy var countryCodeTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .black
         textField.attributedPlaceholder = NSAttributedString(
@@ -37,7 +37,7 @@ class PhoneNumberViewController: UIViewController {
         return textField
     }()
     
-    private let phoneNumberTextField: UITextField = {
+    private lazy var phoneNumberTextField: UITextField = {
         let textField = UITextField()
         textField.backgroundColor = .black
         textField.attributedPlaceholder = NSAttributedString(
@@ -56,7 +56,7 @@ class PhoneNumberViewController: UIViewController {
         return textField
     }()
     
-    private let infoLabel: UILabel = {
+    private lazy var infoLabel: UILabel = {
         let label = UILabel()
         label.text = "Код придет на ваш номер телефона"
         label.font = UIFont.systemFont(ofSize: 13, weight: .light)
@@ -79,23 +79,63 @@ class PhoneNumberViewController: UIViewController {
         return button
     }()
     
+    // MARK: - Life Cycles Methods
     override func viewDidLoad() {
         super.viewDidLoad()
-//        title = "Войти"
-        
         setupUI()
         phoneNumberTextField.addTarget(self, action: #selector(textFieldDidChange), for: .editingChanged)
     }
 
+    // MARK: - UI Setup
     private func setupUI() {
         view.backgroundColor = .black
         
-        view.addSubview(phoneNumberLabel)
-        view.addSubview(countryCodeTextField)
-        view.addSubview(phoneNumberTextField)
-        view.addSubview(infoLabel)
-        view.addSubview(getCodeButton)
+        setupSubview(phoneNumberLabel, 
+                     countryCodeTextField,
+                     phoneNumberTextField,
+                     infoLabel,
+                     getCodeButton
+        )
+//        view.addSubview(phoneNumberLabel)
+//        view.addSubview(countryCodeTextField)
+//        view.addSubview(phoneNumberTextField)
+//        view.addSubview(infoLabel)
+//        view.addSubview(getCodeButton)
+        setupConstraints()
         
+//        NSLayoutConstraint.activate([
+//            phoneNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
+//            phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+//            
+//            countryCodeTextField.topAnchor.constraint(equalTo: phoneNumberLabel.bottomAnchor, constant: 20),
+//            countryCodeTextField.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
+//            countryCodeTextField.widthAnchor.constraint(equalToConstant: 70),
+//            countryCodeTextField.heightAnchor.constraint(equalToConstant: 50),
+//            
+//            phoneNumberTextField.topAnchor.constraint(equalTo: countryCodeTextField.topAnchor),
+//            phoneNumberTextField.bottomAnchor.constraint(equalTo: countryCodeTextField.bottomAnchor),
+//            phoneNumberTextField.leadingAnchor.constraint(equalTo: countryCodeTextField.trailingAnchor, constant: 18),
+//            phoneNumberTextField.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -20),
+//            
+//            infoLabel.topAnchor.constraint(equalTo: phoneNumberTextField.bottomAnchor, constant: 22),
+//            infoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+//            
+//            getCodeButton.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 53),
+//            getCodeButton.widthAnchor.constraint(equalToConstant: 319),
+//            getCodeButton.heightAnchor.constraint(equalToConstant: 56),
+//            getCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+//        ])
+        
+        updateGetCodeButtonState()
+    }
+    
+    private func setupSubview(_ subviews: UIView...) {
+        subviews.forEach { subview in
+            view.addSubview(subview)
+        }
+    }
+    
+    private func setupConstraints() {
         NSLayoutConstraint.activate([
             phoneNumberLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 40),
             phoneNumberLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20),
@@ -118,10 +158,9 @@ class PhoneNumberViewController: UIViewController {
             getCodeButton.heightAnchor.constraint(equalToConstant: 56),
             getCodeButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
         ])
-        
-        updateGetCodeButtonState()
     }
     
+    // MARK: - Private Methods
     @objc private func textFieldDidChange() {
         updateGetCodeButtonState()
     }
@@ -147,10 +186,10 @@ class PhoneNumberViewController: UIViewController {
             }
             DispatchQueue.main.async {
                 let verificationVC = VerificationViewController()
+                verificationVC.title = self?.title
                 self?.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
                 self?.navigationController?.pushViewController(verificationVC, animated: true)
             }
         }
     }
-    
 }

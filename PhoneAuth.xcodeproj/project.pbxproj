@@ -107,11 +107,11 @@
 			children = (
 				8FB9DEBB2C2A9A9500BF3ACC /* MainViewController.swift */,
 				8F9D84172C29CC100083F93C /* PhoneNumberViewController.swift */,
-				8FB9DEBD2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift */,
-				8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */,
 				8F9D842D2C29DD030083F93C /* VerificationViewController.swift */,
 				8FB9DEB52C2A01C000BF3ACC /* AppCodeViewController.swift */,
+				8F9D842B2C29DCEF0083F93C /* AccountViewController.swift */,
 				8FB9DEB72C2A01FD00BF3ACC /* NoCodeViewController.swift */,
+				8FB9DEBD2C2ABE2800BF3ACC /* AppCodeEntryViewController.swift */,
 			);
 			path = Controlllers;
 			sourceTree = "<group>";
